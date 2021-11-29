@@ -1,5 +1,6 @@
+const { onUpdateTrigger } = require("../../../knexfile")
 
-exports.up = knex => knex.schema.createTable('projects', table => {
+exports.up = async knex => knex.schema.createTable('projects', table => {
 
     table.increments('id')
 
@@ -9,7 +10,7 @@ exports.up = knex => knex.schema.createTable('projects', table => {
 
     table.timestamps(true, true)
 
-})
+}).then(() => knew.raw(onUpdateTrigger('projects')))
 
 
-exports.down = knex => knex.schema.dropTable('projects')
+exports.down = async knex => knex.schema.dropTable('projects')

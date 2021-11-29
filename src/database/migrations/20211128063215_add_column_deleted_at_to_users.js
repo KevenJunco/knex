@@ -1,5 +1,5 @@
 
-exports.up = knex => knex.schema.alterTable('users', table => {
+exports.up = async knex => knex.schema.alterTable('users', table => {
 
 
     table.timestamp('deleted_at')
@@ -7,7 +7,7 @@ exports.up = knex => knex.schema.alterTable('users', table => {
 })
 
 
-exports.down = knex => knex.schema.alterTable('users', table => {
+exports.down = async knex => knex.schema.alterTable('users', table => {
 
 
     table.dropColumn('deleted_at')
